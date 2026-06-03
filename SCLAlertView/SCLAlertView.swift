@@ -218,7 +218,7 @@ open class SCLAlertView: UIViewController {
         // Activity indicator
         var activityIndicatorStyle: UIActivityIndicatorView.Style
         
-        public init(kDefaultShadowOpacity: CGFloat = 0.7, kCircleTopPosition: CGFloat = 0.0, kCircleBackgroundTopPosition: CGFloat = 6.0, kCircleHeight: CGFloat = 56.0, kCircleIconHeight: CGFloat = 20.0, kTitleHeight:CGFloat = 25.0,  kWindowWidth: CGFloat = 240.0, kWindowHeight: CGFloat = 178.0, kTextHeight: CGFloat = 90.0, kTextFieldHeight: CGFloat = 30.0, kTextViewdHeight: CGFloat = 80.0, kButtonHeight: CGFloat = 35.0, kTitleFont: UIFont = UIFont.systemFont(ofSize: 20), kTitleMinimumScaleFactor: CGFloat = 1.0, kTextFont: UIFont = UIFont.systemFont(ofSize: 14), kButtonFont: UIFont = UIFont.boldSystemFont(ofSize: 14), showCloseButton: Bool = true, showCircularIcon: Bool = true, shouldAutoDismiss: Bool = true, contentViewCornerRadius: CGFloat = 5.0, fieldCornerRadius: CGFloat = 3.0, buttonCornerRadius: CGFloat = 3.0, hideWhenBackgroundViewIsTapped: Bool = false, circleBackgroundColor: UIColor? = nil, contentViewColor: UIColor? = nil, contentViewBorderColor: UIColor = UIColorFromRGB(0xCCCCCC), titleColor: UIColor? = nil, subTitleColor: UIColor? = nil, margin: Margin = Margin(), dynamicAnimatorActive: Bool = false, disableTapGesture: Bool = false, buttonsLayout: SCLAlertButtonLayout = .vertical, activityIndicatorStyle: UIActivityIndicatorView.Style = UIActivityIndicatorView.Style.medium, textViewAlignment: NSTextAlignment = .center) {
+        public init(kDefaultShadowOpacity: CGFloat = 0.7, kCircleTopPosition: CGFloat = 0.0, kCircleBackgroundTopPosition: CGFloat = 6.0, kCircleHeight: CGFloat = 56.0, kCircleIconHeight: CGFloat = 20.0, kTitleHeight:CGFloat = 25.0,  kWindowWidth: CGFloat = 240.0, kWindowHeight: CGFloat = 178.0, kTextHeight: CGFloat = 90.0, kTextFieldHeight: CGFloat = 30.0, kTextViewdHeight: CGFloat = 80.0, kButtonHeight: CGFloat = 35.0, kTitleFont: UIFont = UIFont.systemFont(ofSize: 20), kTitleMinimumScaleFactor: CGFloat = 1.0, kTextFont: UIFont = UIFont.systemFont(ofSize: 14), kButtonFont: UIFont = UIFont.boldSystemFont(ofSize: 14), showCloseButton: Bool = true, showCircularIcon: Bool = true, shouldAutoDismiss: Bool = true, contentViewCornerRadius: CGFloat = 5.0, fieldCornerRadius: CGFloat = 3.0, buttonCornerRadius: CGFloat = 3.0, hideWhenBackgroundViewIsTapped: Bool = false, circleBackgroundColor: UIColor? = nil, contentViewColor: UIColor? = nil, contentViewBorderColor: UIColor = UIColorFromRGB(0xCCCCCC), titleColor: UIColor? = nil, subTitleColor: UIColor? = nil, margin: Margin = Margin(), dynamicAnimatorActive: Bool = false, disableTapGesture: Bool = false, buttonsLayout: SCLAlertButtonLayout = .vertical, activityIndicatorStyle: UIActivityIndicatorView.Style = .sclDefault, textViewAlignment: NSTextAlignment = .center) {
             
             self.kDefaultShadowOpacity = kDefaultShadowOpacity
             self.kCircleTopPosition = kCircleTopPosition
@@ -1303,7 +1303,7 @@ class SCLAlertViewStyleKit : NSObject {
         }
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 80, height: 80), false, 0)
         SCLAlertViewStyleKit.drawCheckmark()
-        Cache.imageOfCheckmark = UIGraphicsGetImageFromCurrentImageContext()?.withTintColor(.systemBackground)
+        Cache.imageOfCheckmark = UIGraphicsGetImageFromCurrentImageContext()?.sclTinted(with: .sclSystemBackground)
         UIGraphicsEndImageContext()
         return Cache.imageOfCheckmark!
     }
@@ -1314,7 +1314,7 @@ class SCLAlertViewStyleKit : NSObject {
         }
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 80, height: 80), false, 0)
         SCLAlertViewStyleKit.drawCross()
-        Cache.imageOfCross = UIGraphicsGetImageFromCurrentImageContext()?.withTintColor(.systemBackground)
+        Cache.imageOfCross = UIGraphicsGetImageFromCurrentImageContext()?.sclTinted(with: .sclSystemBackground)
         UIGraphicsEndImageContext()
         return Cache.imageOfCross!
     }
@@ -1325,7 +1325,7 @@ class SCLAlertViewStyleKit : NSObject {
         }
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 80, height: 80), false, 0)
         SCLAlertViewStyleKit.drawNotice()
-        Cache.imageOfNotice = UIGraphicsGetImageFromCurrentImageContext()?.withTintColor(.systemBackground)
+        Cache.imageOfNotice = UIGraphicsGetImageFromCurrentImageContext()?.sclTinted(with: .sclSystemBackground)
         UIGraphicsEndImageContext()
         return Cache.imageOfNotice!
     }
@@ -1347,7 +1347,7 @@ class SCLAlertViewStyleKit : NSObject {
         }
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 80, height: 80), false, 0)
         SCLAlertViewStyleKit.drawInfo()
-        Cache.imageOfInfo = UIGraphicsGetImageFromCurrentImageContext()?.withTintColor(.systemBackground)
+        Cache.imageOfInfo = UIGraphicsGetImageFromCurrentImageContext()?.sclTinted(with: .sclSystemBackground)
         UIGraphicsEndImageContext()
         return Cache.imageOfInfo!
     }
@@ -1358,7 +1358,7 @@ class SCLAlertViewStyleKit : NSObject {
         }
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 80, height: 80), false, 0)
         SCLAlertViewStyleKit.drawEdit()
-        Cache.imageOfEdit = UIGraphicsGetImageFromCurrentImageContext()?.withTintColor(.systemBackground)
+        Cache.imageOfEdit = UIGraphicsGetImageFromCurrentImageContext()?.sclTinted(with: .sclSystemBackground)
         UIGraphicsEndImageContext()
         return Cache.imageOfEdit!
     }
@@ -1369,7 +1369,7 @@ class SCLAlertViewStyleKit : NSObject {
         }
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 80, height: 80), false, 0)
         SCLAlertViewStyleKit.drawQuestion()
-        Cache.imageOfQuestion = UIGraphicsGetImageFromCurrentImageContext()?.withTintColor(.systemBackground)
+        Cache.imageOfQuestion = UIGraphicsGetImageFromCurrentImageContext()?.sclTinted(with: .sclSystemBackground)
         UIGraphicsEndImageContext()
         return Cache.imageOfQuestion!
     }
@@ -1384,18 +1384,23 @@ extension SCLAlertView {
 
 fileprivate extension UIColor {
     convenience init(light: UIColor, dark: UIColor) {
-        self.init(dynamicProvider: { traitCollection in
-            return traitCollection.userInterfaceStyle == .dark ? dark : light
-        })
+        if #available(iOS 13.0, *) {
+            self.init(dynamicProvider: { traitCollection in
+                return traitCollection.userInterfaceStyle == .dark ? dark : light
+            })
+        } else {
+            // iOS 12 has no dynamic (dark mode) colours, so resolve to the light variant.
+            self.init(cgColor: light.cgColor)
+        }
     }
 
-    static var defaultBackgroundColor: UIColor = .systemBackground
+    static var defaultBackgroundColor: UIColor = .sclSystemBackground
     
-    static var defaultTitleColor: UIColor = .label
+    static var defaultTitleColor: UIColor = .sclLabel
     
     static var defaultSubTitleColor: UIColor {
         return UIColor(light: UIColorFromRGB(0x4D4D4D), dark: UIColorFromRGB(0xADADAD))
     }
     
-    static var defaultButtonTitleColor: UIColor = .systemBackground
+    static var defaultButtonTitleColor: UIColor = .sclSystemBackground
 }
