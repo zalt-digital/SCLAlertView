@@ -3,8 +3,7 @@ SCLAlertView
 
 Animated Alert View written in Swift, which can be used as a `UIAlertView` or `UIAlertController` replacement with nice customization features. 
 
-![BackgroundImage](https://raw.githubusercontent.com/vikmeup/SCPopUpView/master/successScreenshot.png)_
-![BackgroundImage](https://raw.githubusercontent.com/vikmeup/SCPopUpView/master/editScreenshot.png)
+> **Note:** This is a basic compatibility fork for iOS 12, geared solely towards Swift Package Manager usage. CocoaPods and Carthage support have been removed.
 
 Easy to use
 ----
