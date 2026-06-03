@@ -1,9 +1,6 @@
 SCLAlertView
 ===========
 
-[![Version](https://img.shields.io/cocoapods/v/SCLAlertView.svg?style=flat)](http://cocoadocs.org/docsets/SCLAlertView/)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-
 Animated Alert View written in Swift, which can be used as a `UIAlertView` or `UIAlertController` replacement with nice customization features. 
 
 ![BackgroundImage](https://raw.githubusercontent.com/vikmeup/SCPopUpView/master/successScreenshot.png)_
@@ -256,19 +253,13 @@ public enum SCLAnimationStyle {
 Installation
 ---
 
-SCLAlertView is available through 
+SCLAlertView is available through Swift Package Manager.
 
-### [CocoaPods](http://cocoapods.org)
+Add this repository as a package dependency in Xcode or include it in your package manifest:
 
-To install add the following line to your Podfile:
-
-    pod 'SCLAlertView'
-
-### [Carthage](https://github.com/Carthage/Carthage)
-
-To install add the following line to your Cartfile:
-
-`github "vikmeup/SCLAlertView-Swift" "master"`
+```swift
+.package(url: "https://github.com/vikmeup/SCLAlertView-Swift.git", branch: "master")
+```
 
 Collaboration
 ---

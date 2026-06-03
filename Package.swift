@@ -10,11 +10,16 @@ let package =   Package(
     .library(name: "SCLAlertView", targets: ["SCLAlertView"]),
   ],
   targets: [
-    .target(name: "SCLAlertView", path: "SCLAlertView"),
+    .target(
+      name: "SCLAlertView",
+      path: "SCLAlertView",
+      exclude: ["Info.plist"]
+    ),
     .testTarget(
       name: "SCLAlertViewTests",
       dependencies: ["SCLAlertView"],
-      path: "SCLAlertViewTests"
+      path: "SCLAlertViewTests",
+      exclude: ["Info.plist"]
     )
   ],
   swiftLanguageVersions: [.v5]
